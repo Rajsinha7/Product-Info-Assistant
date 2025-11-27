@@ -1,0 +1,46 @@
+# ---- code 1-----
+"""
+import streamlit as st
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import Chroma
+from langchain.schema import Document
+from transformers import pipeline
+from langchain.llms import HuggingFacePipeline
+from langchain.chains import RetrievalQA
+
+# -------------------- Product Data --------------------
+products = [
+    {"name": "iPhone 14", "description": "Apple iPhone 14 with 6.1-inch Super Retina display, 12MP dual-camera system, A15 Bionic chip, 20-hour video playback, priced at ₹70,000."},
+    {"name": "Samsung Galaxy S23", "description": "Samsung Galaxy S23 with 6.1-inch Dynamic AMOLED display, Snapdragon 8 Gen 2, 50MP triple camera, 25W fast charging, priced at ₹75,000."},
+    {"name": "Redmi Note 12 Pro", "description": "Redmi Note 12 Pro with 6.6-inch AMOLED display, 108MP camera, MediaTek Dimensity 1080, 67W fast charging, priced at ₹19,999."}
+]
+
+# Convert to LangChain documents
+docs = [Document(page_content=p["description"], metadata={"name": p["name"]}) for p in products]
+
+# -------------------- Embeddings + Vector DB --------------------
+embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+db = Chroma.from_documents(docs, embeddings)
+
+# -------------------- Hugging Face Model --------------------
+hf_pipeline = pipeline("text2text-generation", model="google/flan-t5-small", max_new_tokens=200)
+llm = HuggingFacePipeline(pipeline=hf_pipeline)
+
+# -------------------- RAG Chain --------------------
+retriever = db.as_retriever()
+qa = RetrievalQA.from_chain_type(llm=llm, retriever=retriever)
+
+# -------------------- Streamlit UI --------------------
+st.set_page_config(page_title="🛍️ Product Info Assistant", layout="centered")
+st.title("🛍️ Product Info Assistant (No API Key Needed)")
+
+st.write("Ask me anything about the products below 👇")
+for p in products:
+    st.markdown(f"**{p['name']}** → {p['description']}")
+
+query = st.text_input("💬 Your Question:")
+if query:
+    with st.spinner("Thinking..."):
+        answer = qa.run(query)
+    st.success(answer)
+"""

@@ -1,0 +1,45 @@
+🛍️ Product Info Assistant (LangChain + RAG + Hugging Face)
+📌 Project Description
+
+The Product Info Assistant is an AI-powered chatbot that helps users query and compare product information in natural language. Instead of browsing through long product catalogs, users can upload a CSV file containing product details (e.g., name, description, specifications, price) and ask questions like:
+“Which phone has the best camera under ₹20,000?”
+“Compare OnePlus Nord CE 3 and Samsung Galaxy S23 in terms of charging speed.”
+“”
+The application uses RAG (Retrieval-Augmented Generation) to fetch relevant product details from the uploaded catalog and generate intelligent responses.
+This project showcases how GenAI + LangChain + Hugging Face can be used to build a real-world e-commerce assistant similar to Flipkart/Amazon Q&A bots.
+🎯 Key Features
+📂 CSV Upload Support – Upload product catalogs dynamically (no hardcoding).
+🤖 AI-powered Q&A – Ask natural questions about products.
+🔍 Retrieval-Augmented Generation (RAG) – Ensures accurate answers by retrieving only relevant product details.
+💡 Comparison Queries – Compare two or more products.
+🛠 No API Key Needed – Runs entirely on Hugging Face local models (free & offline).
+🌐 Streamlit UI – Clean and interactive chatbot interface.
+🏗️ Tech Stack
+Backend / AI Components
+LangChain → Orchestrates the RAG pipeline.
+LangChain Community → Provides integrations for Hugging Face models and ChromaDB.
+ChromaDB → Vector database for storing product embeddings.
+Hugging Face Transformers →
+Embeddings: sentence-transformers/all-MiniLM-L6-v2 (for semantic search).
+LLM: google/flan-t5-small (for generating answers).
+Frontend
+Streamlit → Builds the interactive web interface.
+Data
+CSV File Upload → Product catalog (name, description, price, specs, etc.).
+🚀 Workflow
+Upload CSV → User uploads product catalog file.
+Vectorization → Product descriptions are embedded using Hugging Face embeddings and stored in ChromaDB.
+User Query → User enters a natural language question.
+Retrieval → Relevant product chunks are fetched from ChromaDB.
+Answer Generation → Hugging Face LLM generates a human-like answer using retrieved context.
+Display → Streamlit UI shows the final answer.
+📌 Example Use Cases
+🛍️ E-commerce Assistant → Help customers quickly compare and select products.
+🎓 Educational Tool → Students can upload course notes/books and query them.
+📂 Custom Knowledge Base → Query any structured data stored in CSV/Excel.
+🔮 Future Enhancements
+Support for Excel (.xlsx) uploads.
+Add price/brand filters in UI.
+Generate comparison tables instead of plain text.
+Add speech-to-text so users can ask queries by voice.
+Deploy on Hugging Face Spaces / Streamlit Cloud / AWS for public use.
