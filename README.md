@@ -4,10 +4,10 @@ The Product Info Assistant is an AI-powered chatbot that helps users query and c
 “”
 The application uses RAG (Retrieval-Augmented Generation) to fetch relevant product details from the uploaded catalog and generate intelligent responses.
 This project showcases how GenAI + LangChain + Hugging Face can be used to build a real-world e-commerce assistant similar to Flipkart/Amazon Q&A bots.
-🎯 Key Features
-📂 CSV Upload Support – Upload product catalogs dynamically (no hardcoding).
-🤖 AI-powered Q&A – Ask natural questions about products.
-🔍 Retrieval-Augmented Generation (RAG) – Ensures accurate answers by retrieving only relevant product details.
-💡 Comparison Queries – Compare two or more products.
-🛠 No API Key Needed – Runs entirely on Hugging Face local models (free & offline).
-🌐 Streamlit UI – Clean and interactive chatbot interface.
+- Key Features
+(1) CSV Upload Support – Upload product catalogs dynamically (no hardcoding).
+(2) AI-powered Q&A – Ask natural questions about products.
+(3) Retrieval-Augmented Generation (RAG) – Ensures accurate answers by retrieving only relevant product details.
+(4) Comparison Queries – Compare two or more products.
+(5)� No API Key Needed – Runs entirely on Hugging Face local models (free & offline).
+(6) Streamlit UI – Clean and interactive chatbot interface.
